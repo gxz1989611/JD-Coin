@@ -3,7 +3,7 @@ import getpass
 import json
 import logging
 import sys
-from base64 import b85decode
+from base64 import b64decode
 from pathlib import Path
 
 log_format = '%(asctime)s %(name)s[%(module)s] %(levelname)s: %(message)s'
@@ -31,8 +31,8 @@ class Config:
 
         try:
             the_config.qq = {
-                'account': b85decode(d['qq']['account']).decode(),
-                'password': b85decode(d['qq']['password']).decode()
+                'account': b64decode(d['qq']['account']).decode(),
+                'password': b64decode(d['qq']['password']).decode()
             }
         except Exception as e:
             logging.error('获取 QQ 帐号出错: ' + repr(e))
