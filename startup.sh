@@ -3,4 +3,5 @@
 source /etc/profile
 source ~/.bash_profile
 
-nohup python ./app/main.py >> ./daka.log 2>&1 &
+base=$(cd `dirname "$0"`; pwd)
+nohup python $base/app/main.py >> $base/daka.log 2>&1 &
