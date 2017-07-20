@@ -2,7 +2,7 @@ import argparse
 import json
 import logging
 import sys
-from base64 import b85decode
+from base64 import b64decode
 from pathlib import Path
 
 log_format = '%(asctime)s %(name)s[%(module)s] %(levelname)s: %(message)s'
@@ -30,8 +30,8 @@ class Config:
 
         try:
             the_config.jd = {
-                'username': b85decode(d['jd']['username']).decode(),
-                'password': b85decode(d['jd']['password']).decode()
+                'username': b64decode(d['jd']['username']).decode(),
+                'password': b64decode(d['jd']['password']).decode()
             }
         except Exception as e:
             logging.error('获取京东帐号出错: ' + repr(e))
